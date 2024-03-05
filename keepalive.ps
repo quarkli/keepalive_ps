@@ -7,7 +7,7 @@ IF(1){
 		IF($T -lt (120*$K)){
 			$X=$C.X;$Y=$C.Y;$T++;
 			$px=$X;$py=$Y;
-			echo $T;
+			#echo $T;
 			$dX=Get-Random -Minimum -1.5 -Maximum 1.5
 			$dY=Get-Random -Minimum -1.5 -Maximum 1.5
 			Start-Sleep -Milliseconds 100;
@@ -19,7 +19,7 @@ IF(1){
 				$px=[Math]::Abs(($px+$dX));$X=[Math]::Round($px%$S.Width);
 				$py=[Math]::Abs(($py+$dY));$Y=[Math]::Round($py%$S.Height);
 				 [Windows.Forms.Cursor]::Position="$X,$Y";
-				echo "$X,$Y"
+				#echo "$X,$Y"
 				Start-Sleep -Milliseconds 100;
 				IF($T -gt (150*$K)){$T=0}
 			}
