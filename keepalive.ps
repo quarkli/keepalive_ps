@@ -1,0 +1,31 @@
+IF(1){
+	Add-Type -AssemblyName System.Windows.Forms;
+	$S=[System.Windows.Forms.SystemInformation]::VirtualScreen;
+	$K=10;$T=0;$X=0;$Y=0;$px=0;$py=0;$dX=0;$dY=0;
+	for(;;){
+		$C=[Windows.Forms.Cursor]::Position;
+		IF($T -lt (120*$K)){
+			$X=$C.X;$Y=$C.Y;$T++;
+			$px=$X;$py=$Y;
+			echo $T;
+			$dX=Get-Random -Minimum -1.5 -Maximum 1.5
+			$dY=Get-Random -Minimum -1.5 -Maximum 1.5
+			Start-Sleep -Milliseconds 100;
+		}
+		ELSE{
+			IF($X -eq $C.X -AND $Y -eq $C.Y){
+				$T++;
+				#echo $T;
+				$px=[Math]::Abs(($px+$dX));$X=[Math]::Round($px%$S.Width);
+				$py=[Math]::Abs(($py+$dY));$Y=[Math]::Round($py%$S.Height);
+				 [Windows.Forms.Cursor]::Position="$X,$Y";
+				echo "$X,$Y"
+				Start-Sleep -Milliseconds 100;
+				IF($T -gt (150*$K)){$T=0}
+			}
+			ELSE{
+				$T=0;
+			}
+		}
+	}
+}
