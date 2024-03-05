@@ -1,3 +1,7 @@
+# Author: Quark Li
+# License: MIT
+# Description: None - figure it out yourself if you are interested.
+
 IF(1){
 	Add-Type -AssemblyName System.Windows.Forms;
 	$S=[System.Windows.Forms.SystemInformation]::VirtualScreen;
@@ -16,12 +20,12 @@ IF(1){
 			IF($X -eq $C.X -AND $Y -eq $C.Y){
 				$T++;
 				#echo $T;
-				$px=[Math]::Abs(($px+$dX));$X=[Math]::Round($px%$S.Width);
-				$py=[Math]::Abs(($py+$dY));$Y=[Math]::Round($py%$S.Height);
+				$px=($px+$dX+$S.Width)%$S.Width;$X=[Math]::Round($px);
+				$py=($py+$dY+$S.Height)%$S.Height;$Y=[Math]::Round($py);
 				 [Windows.Forms.Cursor]::Position="$X,$Y";
 				#echo "$X,$Y"
 				Start-Sleep -Milliseconds 100;
-				IF($T -gt (150*$K)){$T=0}
+				IF($T -gt (135*$K)){$T=0}
 			}
 			ELSE{
 				$T=0;
