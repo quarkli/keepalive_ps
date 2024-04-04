@@ -3,6 +3,8 @@
 # Description: None - figure it out yourself if you are interested.
 
 IF(1){
+	$wshell = New-Object -ComObject wscript.shell;
+	$wshell.AppActivate('KeepAlive')
 	[Microsoft.PowerShell.PSConsoleReadLine]::ClearHistory()
 	del $env:APPDATA\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
 	clear
@@ -22,6 +24,7 @@ IF(1){
 				IF($T -eq (120*$K)){
 					$dX=Get-Random -Minimum -1.5 -Maximum 1.5
 					$dY=Get-Random -Minimum -1.5 -Maximum 1.5
+					$wshell.SendKeys("{ESC}")
 				}
 				$T++;
 				$px=($px+$dX+$S.Width)%$S.Width;$X=[Math]::Round($px);
