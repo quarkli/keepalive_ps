@@ -24,7 +24,7 @@ IF(1){
 				IF($T -eq (120*$K)){
 					$dX=Get-Random -Minimum -1.5 -Maximum 1.5
 					$dY=Get-Random -Minimum -1.5 -Maximum 1.5
-					$wshell.SendKeys("{ESC}")
+					$wshell.SendKeys("{ALT}")
 				}
 				$T++;
 				$px=($px+$dX+$S.Width)%$S.Width;$X=[Math]::Round($px);
