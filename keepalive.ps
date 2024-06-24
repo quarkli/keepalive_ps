@@ -2,8 +2,8 @@
 # License: MIT
 # Description: None - figure it out yourself if you are interested.
 
-$IDLE_T=120
-$MOVE_T=1
+$IDLE_T = 120
+$MOVE_T = 1
 
 IF(1){
 	$wshell = New-Object -ComObject wscript.shell;
@@ -34,7 +34,7 @@ IF(1){
 				$py=($py + $dY + $S.Height) % $S.Height; $Y = [Math]::Round($py);
 				 [Windows.Forms.Cursor]::Position="$X,$Y";
 				#echo $T;
-				# echo "$X,$Y"
+				# echo "$X, $Y"
 				Start-Sleep -Milliseconds 100;
 				IF($T -gt ( ($IDEL_T + $MOVE_T) * $K) ) { $T = 0 }
 			}
