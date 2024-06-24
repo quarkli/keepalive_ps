@@ -2,10 +2,9 @@
 # License: MIT
 # Description: None - figure it out yourself if you are interested.
 
-$IDLE_T = 120
-$MOVE_T = 1
-
 IF(1){
+	$IDLE_T = 120
+	$MOVE_T = 1
 	$wshell = New-Object -ComObject wscript.shell;
 	$wshell.AppActivate('KeepAlive')
 	[Microsoft.PowerShell.PSConsoleReadLine]::ClearHistory()
@@ -17,14 +16,14 @@ IF(1){
 	for(;;){
 		$C=[Windows.Forms.Cursor]::Position;
 		IF($X -eq $C.X -AND $Y -eq $C.Y){
-			IF($T -lt ($IDEL_T * $K)){
+			IF($T -lt ($IDLE_T * $K)){
 				$X = $C.X; $Y = $C.Y; $T++;
 				$px = $X; $py = $Y;
 				# echo $T;
 				Start-Sleep -Milliseconds 100;
 			}
 			ELSE{
-				IF($T -eq ($IDEL_T * $K)){
+				IF($T -eq ($IDLE_T * $K)){
 					$dX = Get-Random -Minimum -1.5 -Maximum 1.5
 					$dY = Get-Random -Minimum -1.5 -Maximum 1.5
 					$wshell.SendKeys("^")
@@ -36,7 +35,7 @@ IF(1){
 				#echo $T;
 				# echo "$X, $Y"
 				Start-Sleep -Milliseconds 100;
-				IF($T -gt ( ($IDEL_T + $MOVE_T) * $K) ) { $T = 0 }
+				IF($T -gt ( ($IDLE_T + $MOVE_T) * $K) ) { $T = 0 }
 			}
 		}
 		ELSE{
